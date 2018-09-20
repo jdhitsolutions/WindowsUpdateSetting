@@ -8,7 +8,7 @@
 RootModule = 'WindowsUpdateSetting.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = @("Desktop")
@@ -101,10 +101,10 @@ PrivateData = @{
           Tags = @('Windows10','WindowsUpdate')
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/jdhitsolutions/WindowsUpdateSetting/blob/master/license.txt'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/jdhitsolutions/WindowsUpdateSetting'
 
         # A URL to an icon representing this module.
         # IconUri = ''

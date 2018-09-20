@@ -1,5 +1,10 @@
 # Changelog for WindowsUpdateSetting
 
+## v0.2.1
+
++ Github updates
++ Updated README
+
 ## v0.2.0
 
 + Updated manifest
