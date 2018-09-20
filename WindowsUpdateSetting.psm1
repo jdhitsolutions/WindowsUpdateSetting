@@ -4,6 +4,8 @@
 #region main code
 Function Set-WindowsUpdateDeferral {
     [cmdletbinding(SupportsShouldProcess)]
+    [OutputType("None", "WindowsUpdateDeferral")]
+
     Param (
         [Parameter(HelpMessage = "Enter the number of days (0-365) to defer feature updates")]
         [ValidateRange(0, 365)]
@@ -32,9 +34,10 @@ Function Set-WindowsUpdateDeferral {
 
     Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($myinvocation.mycommand)"
 }
-
 Function Get-WindowsUpdateDeferral {
     [cmdletbinding()]
+    [OutputType("WindowsUpdateDeferral")]
+
     Param ()
 
     Write-Verbose "[$((Get-Date).TimeofDay)] Starting $($myinvocation.mycommand)"
@@ -43,16 +46,20 @@ Function Get-WindowsUpdateDeferral {
     $feature = Get-ItemPropertyValue -Path $base1 -Name DeferFeatureUpdatesPeriodInDays
     $Quality = Get-ItemPropertyValue -Path $base1 -Name DeferQualityUpdatesPeriodInDays
 
-    [PSCustomObject]@{
+    $obj = [PSCustomObject]@{
         Computername          = $env:COMPUTERNAME
         FeatureUpdateDeferral = $Feature
         QualityUpdateDeferral = $Quality
     }
 
+    $obj.psobject.typenames.insert(0, 'WindowsUpdateDeferral')
+    $obj
     Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($myinvocation.mycommand)"
 }
 Function Set-WindowsActiveHours {
     [cmdletbinding(SupportsShouldProcess)]
+    [OutputType("None", "WindowsActiveHours")]
+
     Param(
         [Parameter(Mandatory, HelpMessage = "Enter a starting time like 7:00AM")]
         [datetime]$StartTime,
@@ -88,10 +95,9 @@ Function Set-WindowsActiveHours {
     Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($myinvocation.mycommand)"
 
 } #close Set-WindowsActiveHours
-
 Function Get-WindowsActiveHours {
     [cmdletbinding()]
-    [OutputType([PSCustomObject])]
+    [OutputType('WindowsActiveHours')]
 
     Param()
 
@@ -102,20 +108,22 @@ Function Get-WindowsActiveHours {
     $start = Get-ItemPropertyValue -Path $base1 -Name ActiveHoursStart
     $end = Get-ItemPropertyValue -Path $base1 -Name ActiveHoursEnd
 
-    [PSCustomObject]@{
+    $obj = [PSCustomObject]@{
         Computername     = $env:COMPUTERNAME
         ActiveHoursStart = $start
         ActiveHoursEnd   = $end
     }
 
+    $obj.psobject.typenames.insert(0, 'WindowsActiveHours')
+    $obj
+
     Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($myinvocation.mycommand)"
 
 } #close Get-WindowsActiveHours
-
 Function Suspend-WindowsUpdate {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [OutputType("None")]
+    [OutputType("None", "WindowsUpdateSetting")]
 
     Param(
         [Parameter(HelpMessage = "Enter a datetime to resume updates. This must be less than 35 days.")]
@@ -140,7 +148,8 @@ Function Suspend-WindowsUpdate {
                 }
             })]
         [datetime]$Resume = (Get-Date).AddDays(35),
-        [switch]$Passthru)
+        [switch]$Passthru
+    )
 
     Write-Verbose "[$((Get-Date).TimeofDay)] Starting $($MyInvocation.Mycommand)"
 
@@ -155,7 +164,7 @@ Function Suspend-WindowsUpdate {
 
     Write-Verbose "[$((Get-Date).TimeofDay)] Pausing Windows Updates until $end"
 
-    if ($pscmdlet.ShouldProcess($env:computername)) {
+    if ($pscmdlet.ShouldProcess($env:computername, "Suspend Windows Update until $Resume")) {
 
         $base1 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings"
         Set-ItemProperty -Path $base1 -Name PauseFeatureUpdatesStartTime -Value $start -Type String
@@ -178,11 +187,10 @@ Function Suspend-WindowsUpdate {
     Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($MyInvocation.Mycommand)"
 
 } #close function
-
 Function Resume-WindowsUpdate {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [OutputType("None")]
+    [OutputType("None", "WindowsUpdateSetting")]
 
     Param([switch]$Passthru)
 
@@ -233,7 +241,6 @@ Function Resume-WindowsUpdate {
     Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($MyInvocation.Mycommand)"
 
 } #close function
-
 Function Test-IsWindowsUpdatePaused {
 
     [cmdletbinding()]
@@ -254,11 +261,10 @@ Function Test-IsWindowsUpdatePaused {
 
     Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($MyInvocation.Mycommand)"
 }
-
 Function Get-WindowsUpdateSetting {
 
     [CmdletBinding()]
-    [OutputType([PSCustomObject])]
+    [OutputType('WindowsUpdateSetting')]
 
     Param()
 
@@ -278,13 +284,16 @@ Function Get-WindowsUpdateSetting {
         $resume = $null
         $remain = $null
     }
-    [pscustomobject]@{
+    $obj = [pscustomobject]@{
         Computername  = $env:computername
         UpdatesPaused = $paused
         PauseStartUTC = $start
         PauseEndUTC   = $resume
         Remaining     = $remain
     }
+
+    $obj.psobject.typenames.insert(0, 'WindowsUpdateSetting')
+    $obj
 
     Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($MyInvocation.Mycommand)"
 }

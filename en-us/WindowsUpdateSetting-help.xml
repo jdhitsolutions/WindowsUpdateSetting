@@ -31,7 +31,7 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Management.Automation.PSObject</maml:name>
+          <maml:name>WindowsActiveHours</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -94,7 +94,7 @@ BOVINE320                   7             20</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Object</maml:name>
+          <maml:name>WindowsUpdateDeferral</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -157,7 +157,7 @@ BOVINE320                       30                     7</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>PSCustomObject</maml:name>
+          <maml:name>WindowsUpdateSetting</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -291,7 +291,7 @@ Remaining     : 34.23:55:49.1598117</dev:code>
       </command:returnValue>
       <command:returnValue>
         <dev:type>
-          <maml:name>PSCustomObject</maml:name>
+          <maml:name>WindowsUpdateSetting</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -468,7 +468,15 @@ Remaining     : 34.23:55:49.1598117</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Object</maml:name>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>WindowsActiveHours</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -656,7 +664,15 @@ BOVINE320                   6             21</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Object</maml:name>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>WindowsUpdateDeferral</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -805,6 +821,14 @@ BOVINE320                       30                     7</dev:code>
       <command:returnValue>
         <dev:type>
           <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>WindowsUpdateSetting</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
