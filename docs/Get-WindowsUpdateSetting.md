@@ -1,6 +1,6 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
-Module Name: windowsupdatesetting
+Module Name: WindowsUpdateSetting
 online version:
 schema: 2.0.0
 ---
@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Get the current Windows Update settings
+Get the current Windows Update settings.
 
 ## SYNTAX
 
@@ -41,8 +41,7 @@ The settings when updates are paused.
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

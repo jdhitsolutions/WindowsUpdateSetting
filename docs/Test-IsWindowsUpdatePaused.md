@@ -1,6 +1,6 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
-Module Name: windowsupdatesetting
+Module Name: WindowsUpdateSetting
 online version:
 schema: 2.0.0
 ---
@@ -19,7 +19,7 @@ Test-IsWindowsUpdatePaused [<CommonParameters>]
 
 ## DESCRIPTION
 
-A simple boolean test to determine if updates are paused on a Windows 10 system.
+A simple Boolean test to determine if updates are paused on a Windows 10 system.
 
 ## EXAMPLES
 
@@ -35,8 +35,7 @@ True
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

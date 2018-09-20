@@ -1,6 +1,6 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
-Module Name: windowsupdatesetting
+Module Name: WindowsUpdateSetting
 online version:
 schema: 2.0.0
 ---
@@ -14,13 +14,13 @@ Pause Windows Updates for 35 days.
 ## SYNTAX
 
 ```yaml
-Suspend-WindowsUpdate [-Passthru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Suspend-WindowsUpdate [-Resume <DateTime>] [-Passthru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
 This command achieves the same result as pausing Windows Updates in Settings/Windows Update/Advanced Settings.
-Your system will not check or get any updates for 35 days.
+By default your system will not check or get any updates for 35 days. But you can specify a closer date.
 
 ## EXAMPLES
 
@@ -42,6 +42,21 @@ PauseStartUTC : 9/19/2018 11:13:16 PM
 PauseEndUTC   : 10/24/2018 11:13:16 PM
 Remaining     : 34.23:59:59.6602540
 ```
+
+### EXAMPLE 3
+
+```powershell
+PS C:\> Suspend-WindowsUpdate -Resume "9/30/2018" -Passthru
+
+
+Computername  : BOVINE320
+UpdatesPaused : True
+PauseStartUTC : 9/20/2018 1:25:15 PM
+PauseEndUTC   : 9/30/2018 4:00:00 AM
+Remaining     : 9.18:34:43.9615246
+```
+
+Suspend Windows Updates for about 10 days.
 
 ## PARAMETERS
 
@@ -93,10 +108,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Resume
+
+Enter a datetime to resume updates. This must be less than 35 days.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

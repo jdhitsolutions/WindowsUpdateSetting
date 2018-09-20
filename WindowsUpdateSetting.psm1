@@ -1,26 +1,159 @@
 #requires -version 5.1
 
+
 #region main code
+Function Set-WindowsUpdateDeferral {
+    [cmdletbinding(SupportsShouldProcess)]
+    Param (
+        [Parameter(HelpMessage = "Enter the number of days (0-365) to defer feature updates")]
+        [ValidateRange(0, 365)]
+        [int]$Feature,
+        [Parameter(HelpMessage = "Enter the number of days (0-365) to defer quality updates")]
+        [ValidateRange(0, 365)]
+        [int]$Quality,
+        [switch]$Passthru
+    )
+
+    Write-Verbose "[$((Get-Date).TimeofDay)] Starting $($myinvocation.mycommand)"
+    $base1 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings"
+
+    if ($PSCmdlet.ShouldProcess("$env:COMPUTERNAME")) {
+        if ($Feature) {
+            Set-ItemProperty -Path $base1 -Name DeferFeatureUpdatesPeriodInDays -Value $Feature
+        }
+        if ($Quality) {
+            Set-ItemProperty -Path $base1 -Name DeferQualityUpdatesPeriodInDays -Value $Quality
+        }
+
+        if ($Passthru) {
+            Get-WindowsUpdateDeferral
+        }
+    } #should process
+
+    Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($myinvocation.mycommand)"
+}
+
+Function Get-WindowsUpdateDeferral {
+    [cmdletbinding()]
+    Param ()
+
+    Write-Verbose "[$((Get-Date).TimeofDay)] Starting $($myinvocation.mycommand)"
+    $base1 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings"
+
+    $feature = Get-ItemPropertyValue -Path $base1 -Name DeferFeatureUpdatesPeriodInDays
+    $Quality = Get-ItemPropertyValue -Path $base1 -Name DeferQualityUpdatesPeriodInDays
+
+    [PSCustomObject]@{
+        Computername          = $env:COMPUTERNAME
+        FeatureUpdateDeferral = $Feature
+        QualityUpdateDeferral = $Quality
+    }
+
+    Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($myinvocation.mycommand)"
+}
+Function Set-WindowsActiveHours {
+    [cmdletbinding(SupportsShouldProcess)]
+    Param(
+        [Parameter(Mandatory, HelpMessage = "Enter a starting time like 7:00AM")]
+        [datetime]$StartTime,
+        [Parameter(Mandatory, HelpMessage = "Enter a ending time like 7:00PM")]
+        [datetime]$EndTime,
+        [switch]$Passthru
+    )
+
+    Write-Verbose "[$((Get-Date).TimeofDay)] Starting $($myinvocation.mycommand)"
+
+    $base1 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings"
+
+    #times must be 18 hours or less apart
+    $ts = New-Timespan -start $startTime -end $EndTime
+
+    if ($ts.hours -gt 18 -OR $ts.hours -lt 0) {
+        Write-Warning "The end time must be 18 hours or less from the start time."
+        #abort and bail
+        return
+    }
+    if ($PSCmdlet.ShouldProcess("Windows Active Hours", "Update hours: $($starttime.hour):00 to $($endtime.hour):00")) {
+
+        Write-Verbose "Setting start time to $($startTime.hour):00"
+        Set-ItemProperty -Path $base1 -Name ActiveHoursStart -Value $starttime.hour -type DWord
+
+        Write-Verbose "Setting end time to $($endTime.hour):00"
+        Set-ItemProperty -Path $base1 -Name ActiveHoursEnd -Value $EndTime.hour -type DWord
+
+        if ($passthru) {
+            Get-WindowsActiveHours
+        }
+    } #should process
+    Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($myinvocation.mycommand)"
+
+} #close Set-WindowsActiveHours
+
+Function Get-WindowsActiveHours {
+    [cmdletbinding()]
+    [OutputType([PSCustomObject])]
+
+    Param()
+
+    Write-Verbose "[$((Get-Date).TimeofDay)] Starting $($myinvocation.mycommand)"
+
+    $base1 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings"
+
+    $start = Get-ItemPropertyValue -Path $base1 -Name ActiveHoursStart
+    $end = Get-ItemPropertyValue -Path $base1 -Name ActiveHoursEnd
+
+    [PSCustomObject]@{
+        Computername     = $env:COMPUTERNAME
+        ActiveHoursStart = $start
+        ActiveHoursEnd   = $end
+    }
+
+    Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($myinvocation.mycommand)"
+
+} #close Get-WindowsActiveHours
 
 Function Suspend-WindowsUpdate {
 
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType("None")]
 
-    Param([switch]$Passthru)
+    Param(
+        [Parameter(HelpMessage = "Enter a datetime to resume updates. This must be less than 35 days.")]
+        [ValidateScript( {
+                if ($_ -gt (Get-Date)) {
+                    $True
+                }
+                else {
+                    Throw "You must enter a date in the future."
+                    $false
+                }
 
-    Write-Verbose "Starting $($MyInvocation.Mycommand)"
+            })]
+        [ValidateScript( {
+                $test = New-Timespan -Start (Get-Date) -end $_
+                if ($test.totalDays -gt 35) {
+                    Throw "You must enter a date less than 35 days from now"
+                    $False
+                }
+                else {
+                    $True
+                }
+            })]
+        [datetime]$Resume = (Get-Date).AddDays(35),
+        [switch]$Passthru)
+
+    Write-Verbose "[$((Get-Date).TimeofDay)] Starting $($MyInvocation.Mycommand)"
 
     $epoch = Get-Date 1/1/1600
     $utc = (Get-Date).ToUniversalTime()
     $Start = "{0:u}" -f $utc
-    $End = "{0:u}" -f $utc.AddDays(35)
+    $end = "{0:u}" -f $resume.ToUniversalTime()
 
     $ticks = ($utc - $epoch).Ticks
 
     $val = $ticks - $ticks % [timespan]::TicksPerSecond
 
-    Write-Verbose "Pausing Windows Updates until $end"
+    Write-Verbose "[$((Get-Date).TimeofDay)] Pausing Windows Updates until $end"
 
     if ($pscmdlet.ShouldProcess($env:computername)) {
 
@@ -42,7 +175,7 @@ Function Suspend-WindowsUpdate {
         }
     }
 
-    Write-Verbose "Ending $($MyInvocation.Mycommand)"
+    Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($MyInvocation.Mycommand)"
 
 } #close function
 
@@ -53,38 +186,38 @@ Function Resume-WindowsUpdate {
 
     Param([switch]$Passthru)
 
-    Write-Verbose "Starting $($MyInvocation.Mycommand)"
+    Write-Verbose "[$((Get-Date).TimeofDay)] Starting $($MyInvocation.Mycommand)"
 
-    Write-Verbose "Testing if Windows Update is paused"
+    Write-Verbose "[$((Get-Date).TimeofDay)] Testing if Windows Update is paused"
 
     if (Test-IsWindowsUpdatePaused) {
 
         If ($pscmdlet.ShouldProcess($env:COMPUTERNAME)) {
-            Write-Verbose "Restoring Windows Update Settings"
+            Write-Verbose "[$((Get-Date).TimeofDay)] Restoring Windows Update Settings"
             $base1 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings"
 
             $settings = 'PauseFeatureUpdatesStartTime', 'PauseQualityUpdatesStartTime',
             'PauseUpdatesExpiryTime', 'PauseFeatureUpdatesEndTime', 'PauseQualityUpdatesEndTime'
 
-            Write-Verbose "Removing registry values from $base1"
+            Write-Verbose "[$((Get-Date).TimeofDay)] Removing registry values from $base1"
             foreach ($setting in $settings) {
-                Write-Verbose "..$setting"
+                Write-Verbose "[$((Get-Date).TimeofDay)] ..$setting"
                 Remove-ItemProperty -Path $base1 -Name $setting
             }
 
             $base2 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UpdatePolicy\Settings"
             $settings = 'PausedFeatureStatus', 'PausedQualityStatus'
-            Write-Verbose "Updating registry values from $base2"
+            Write-Verbose "[$((Get-Date).TimeofDay)] Updating registry values from $base2"
 
             foreach ($setting in $settings) {
-                Write-Verbose "..$setting"
+                Write-Verbose "[$((Get-Date).TimeofDay)] ..$setting"
                 Set-ItemProperty -path $base2 -name $setting -value 0 -type DWord  #dword 1 = on 0 = off
             }
 
             $settings = 'PausedFeatureDate', 'PausedQualityDate'
-            Write-Verbose "Removing registry values from $base2"
+            Write-Verbose "[$((Get-Date).TimeofDay)] Removing registry values from $base2"
             foreach ($setting in $settings) {
-                Write-Verbose "..$setting"
+                Write-Verbose "[$((Get-Date).TimeofDay)] ..$setting"
                 Remove-ItemProperty -Path $base2 -Name $setting
             }
 
@@ -97,7 +230,7 @@ Function Resume-WindowsUpdate {
         Write-Host "Windows Updates are already enabled" -ForegroundColor green
     }
 
-    Write-Verbose "Ending $($MyInvocation.Mycommand)"
+    Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($MyInvocation.Mycommand)"
 
 } #close function
 
@@ -108,7 +241,7 @@ Function Test-IsWindowsUpdatePaused {
 
     Param()
 
-    Write-Verbose "Starting $($MyInvocation.Mycommand)"
+    Write-Verbose "[$((Get-Date).TimeofDay)] Starting $($MyInvocation.Mycommand)"
 
     $base1 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings"
     Try {
@@ -119,7 +252,7 @@ Function Test-IsWindowsUpdatePaused {
         $False
     }
 
-    Write-Verbose "Ending $($MyInvocation.Mycommand)"
+    Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($MyInvocation.Mycommand)"
 }
 
 Function Get-WindowsUpdateSetting {
@@ -129,13 +262,15 @@ Function Get-WindowsUpdateSetting {
 
     Param()
 
-    Write-Verbose "Starting $($MyInvocation.Mycommand)"
+    Write-Verbose "[$((Get-Date).TimeofDay)] Starting $($MyInvocation.Mycommand)"
     $base1 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings"
 
     $paused = Test-IsWindowsUpdatePaused
+
     if ($paused) {
-        $start = (Get-ItemPropertyValue -Path $base1 -Name PauseFeatureUpdatesStartTime) -As [datetime]
-        $resume = (Get-ItemPropertyValue -Path $base1 -Name PauseFeatureUpdatesEndTime) -As [datetime]
+        Write-Verbose "[$((Get-Date).TimeofDay)] Querying $base1 for values"
+        $start = ((Get-ItemPropertyValue -Path $base1 -Name PauseFeatureUpdatesStartTime) -As [datetime]).ToUniversalTime()
+        $resume = ((Get-ItemPropertyValue -Path $base1 -Name PauseFeatureUpdatesEndTime) -As [datetime]).ToUniversalTime()
         $remain = $resume - (Get-Date)
     }
     else {
@@ -146,12 +281,12 @@ Function Get-WindowsUpdateSetting {
     [pscustomobject]@{
         Computername  = $env:computername
         UpdatesPaused = $paused
-        PauseStartUTC = $start.ToUniversalTime()
-        PauseEndUTC   = $resume.ToUniversalTime()
+        PauseStartUTC = $start
+        PauseEndUTC   = $resume
         Remaining     = $remain
     }
 
-    Write-Verbose "Ending $($MyInvocation.Mycommand)"
+    Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($MyInvocation.Mycommand)"
 }
 
 #endregion
