@@ -710,11 +710,11 @@ BOVINE320                       30                     7</dev:code>
       <command:verb>Suspend</command:verb>
       <command:noun>WindowsUpdate</command:noun>
       <maml:description>
-        <maml:para>Pause Windows Updates for 35 days.</maml:para>
+        <maml:para>Pause Windows Updates for 35 days or less.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>This command achieves the same result as pausing Windows Updates in Settings/Windows Update/Advanced Settings. By default your system will not check or get any updates for 35 days. But you can specify a closer date.</maml:para>
+      <maml:para>This command achieves the same result as pausing Windows Updates in Settings/Windows Update/Advanced Settings. By default your system will not check or get any updates for 35 days. But you can specify a date that is less than 35 days.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -762,7 +762,7 @@ BOVINE320                       30                     7</dev:code>
             <maml:name>DateTime</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>35 days from now</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -813,7 +813,7 @@ BOVINE320                       30                     7</dev:code>
           <maml:name>DateTime</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>35 days from now</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes />

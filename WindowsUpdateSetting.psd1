@@ -8,10 +8,10 @@
 RootModule = 'WindowsUpdateSetting.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '0.3.1'
 
 # Supported PSEditions
-CompatiblePSEditions = @("Desktop")
+# CompatiblePSEditions = @("")
 
 # ID used to uniquely identify this module
 GUID = '1d09501c-fc3f-424a-9fb9-c2a5d6f59001'
@@ -65,7 +65,8 @@ PowerShellVersion = '5.1'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Suspend-WindowsUpdate',
+FunctionsToExport = @(
+'Suspend-WindowsUpdate',
 'Resume-WindowsUpdate',
 'Get-WindowsUpdateSetting',
 'Test-IsWindowsUpdatePaused',
@@ -73,6 +74,7 @@ FunctionsToExport = 'Suspend-WindowsUpdate',
 'Get-WindowsActiveHours',
 'Get-WindowsUpdateDeferral',
 'Set-WindowsUpdateDeferral'
+)
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = '*'
@@ -81,7 +83,7 @@ CmdletsToExport = '*'
 VariablesToExport = ''
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = ''
+AliasesToExport = 'rwu','swu','gwu'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -98,7 +100,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-          Tags = @('Windows10','WindowsUpdate')
+        Tags = @('Windows10','WindowsUpdate')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/jdhitsolutions/WindowsUpdateSetting/blob/master/license.txt'
@@ -107,7 +109,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/jdhitsolutions/WindowsUpdateSetting'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://github.com/jdhitsolutions/WindowsUpdateSetting/blob/master/assets/windows10.ico'
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''

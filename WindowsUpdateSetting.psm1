@@ -124,6 +124,7 @@ Function Suspend-WindowsUpdate {
 
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType("None", "WindowsUpdateSetting")]
+    [Alias("swu")]
 
     Param(
         [Parameter(HelpMessage = "Enter a datetime to resume updates. This must be less than 35 days.")]
@@ -191,6 +192,7 @@ Function Resume-WindowsUpdate {
 
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType("None", "WindowsUpdateSetting")]
+    [Alias("rwu")]
 
     Param([switch]$Passthru)
 
@@ -265,6 +267,7 @@ Function Get-WindowsUpdateSetting {
 
     [CmdletBinding()]
     [OutputType('WindowsUpdateSetting')]
+    [Alias("gwu")]
 
     Param()
 

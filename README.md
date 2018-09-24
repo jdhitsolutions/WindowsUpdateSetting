@@ -1,6 +1,14 @@
 # WindowsUpdateSetting
 
-The PowerShell commands in this module are intended to make it easier to automate the process of pausing and resuming Windows Updates on a Windows 10 desktop as well as a few other update related settings.
+The PowerShell commands in this module are intended to make it easier to automate the process of pausing and resuming Windows Updates on a Windows 10 desktop as well as a few other update related settings. This module will not work on Windows 10 Home. If you are running Windows 10 Enterprise, your settings may be managed via Group Policy.
+
+You can install the latest version of this module from the PowerShell Gallery.
+
+```powershell
+Install-Module WindowsUpdateSetting
+```
+
+The module should work on PowerShell Core running on a Windows platform.
 
 ## Command Overview
 
@@ -84,6 +92,6 @@ Computername FeatureUpdateDeferral QualityUpdateDeferral
 BOVINE320                       30                     7
 ```
 
-**You should test all of these commands on a non-production system**
+**You should test all of these commands on a non-production system.**
 
- *last updated 9/20/2018*
+ *last updated 9/24/2018*

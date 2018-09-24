@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Pause Windows Updates for 35 days.
+Pause Windows Updates for 35 days or less.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Suspend-WindowsUpdate [-Resume <DateTime>] [-Passthru] [-WhatIf] [-Confirm] [<Co
 ## DESCRIPTION
 
 This command achieves the same result as pausing Windows Updates in Settings/Windows Update/Advanced Settings.
-By default your system will not check or get any updates for 35 days. But you can specify a closer date.
+By default your system will not check or get any updates for 35 days. But you can specify a date that is less than 35 days.
 
 ## EXAMPLES
 
@@ -119,7 +119,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 35 days from now
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -1,9 +1,17 @@
 # Changelog for WindowsUpdateSetting
 
+## v0.3.1
+
++ Updated manifest
++ Updated help for `Suspend-WindowsUpdate` (Issue #4)
++ Added module icon
++ Updated README
++ Added some command aliases
+
 ## v0.3.0
 
 + Updated ShouldProcess message on `Suspend-WindowsUpdate` (Issue #3)
-+ Added custom type names to PSCustomobject output (Issue #2)
++ Added custom type names to PSCustomObject output (Issue #2)
 + Updated README
 + Updated documentation
 
