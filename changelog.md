@@ -1,5 +1,10 @@
 # Changelog for WindowsUpdateSetting
 
+## v0.3.2
+
++ file cleanup for PowerShell Gallery
++ manifest update
+
 ## v0.3.1
 
 + Updated manifest

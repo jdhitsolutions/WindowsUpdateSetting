@@ -8,10 +8,10 @@
 RootModule = 'WindowsUpdateSetting.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.1'
+ModuleVersion = '0.3.2'
 
 # Supported PSEditions
-# CompatiblePSEditions = @("")
+CompatiblePSEditions = @("Desktop","Core")
 
 # ID used to uniquely identify this module
 GUID = '1d09501c-fc3f-424a-9fb9-c2a5d6f59001'
