@@ -1,8 +1,10 @@
 # WindowsUpdateSetting
 
-The PowerShell commands in this module are intended to make it easier to automate the process of pausing and resuming Windows Updates on a Windows 10 desktop as well as a few other update related settings. This module will not work on Windows 10 Home. If you are running Windows 10 Enterprise, your settings may be managed via Group Policy.
+[![PSGallery Version](https://img.shields.io/powershellgallery/v/WindowsUpdateSetting.png?style=for-the-badge&label=PowerShell%20Gallery)](https://www.powershellgallery.com/packages/WindowsUpdateSetting/) [![PSGallery Downloads](https://img.shields.io/powershellgallery/dt/WindowsUpdateSetting.png?style=for-the-badge&label=Downloads)](https://www.powershellgallery.com/packages/WindowsUpdateSetting/)
 
-You can install the latest version of this module from the PowerShell Gallery.
+The PowerShell commands in this module are intended to make it easier to automate the process of pausing and resuming Windows Updates on a Windows 10 desktop as well as a few other update related settings. This module will not work on Windows 10 Home. If you are running Windows 10 Enterprise, your settings may be managed via Group Policy, in which case you won't be able to use this module.
+
+You can install the latest version of this module from the PowerShell Gallery. It has been tested with PowerShell 7 on a Windows platform.
 
 ```powershell
 Install-Module WindowsUpdateSetting
@@ -85,7 +87,7 @@ Computername FeatureUpdateDeferral QualityUpdateDeferral
 BOVINE320                       30                     7
 
 
-PS C:\> set-WindowsUpdateDeferral -Feature 0 -Quality 0 -Passthru
+PS C:\> Set-WindowsUpdateDeferral -Feature 0 -Quality 0 -Passthru
 
 Computername FeatureUpdateDeferral QualityUpdateDeferral
 ------------ --------------------- ---------------------
@@ -94,4 +96,4 @@ BOVINE320                       30                     7
 
 **You should test all of these commands on a non-production system.**
 
- *last updated 23 October 2018*
+*last updated 23 October 2018*
