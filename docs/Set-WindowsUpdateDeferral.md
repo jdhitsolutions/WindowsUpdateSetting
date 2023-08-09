@@ -1,7 +1,7 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
 Module Name: WindowsUpdateSetting
-online version:
+online version: https://bit.ly/44ZqRS1
 schema: 2.0.0
 ---
 
@@ -138,4 +138,4 @@ Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell
 
 ## RELATED LINKS
 
-[Get-WindowsUpdateDeferral]()
+[Get-WindowsUpdateDeferral](Get-WindowsUpdateDeferral.md)

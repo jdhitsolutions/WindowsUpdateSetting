@@ -1,7 +1,7 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
 Module Name: WindowsUpdateSetting
-online version:
+online version: https://bit.ly/3DRauLo
 schema: 2.0.0
 ---
 
@@ -14,13 +14,12 @@ Configure Windows active hours.
 ## SYNTAX
 
 ```yaml
-Set-WindowsActiveHours [-StartTime] <DateTime> [-EndTime] <DateTime> [-Passthru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-WindowsActiveHours [-StartTime] <DateTime> [-EndTime] <DateTime> [-Passthru] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-Use this command to configure your active hours. During this time span, Windows should not restart your computer. The timespan between start and end times cannot exceed 18 hours.
+Use this command to configure your active hours. During this time span, Windows should not restart your computer. The time span between start and end times cannot exceed 18 hours.
 
 ## EXAMPLES
 
@@ -33,11 +32,11 @@ PS C:\> Set-WindowsActiveHours -starttime "7:00AM" -endtime "6:00PM"
 ### Example 2
 
 ```powershell
-PS C:\> Set-WindowsActiveHours -StartTime 6:00 -EndTime 21:00 -Passthru
+PS C:\> Set-WindowsActiveHours -StartTime 8:00 -EndTime 20:00 -Passthru
 
-Computername ActiveHoursStart ActiveHoursEnd
------------- ---------------- --------------
-BOVINE320                   6             21
+Computername         Start        End
+------------         -----        ---
+PROSPERO          08:00 AM   08:00 PM
 ```
 
 ## PARAMETERS
@@ -142,4 +141,4 @@ Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell
 
 ## RELATED LINKS
 
-[Get-WindowsActiveHours]()
+[Get-WindowsActiveHours](Get-WindowsActiveHours.md)

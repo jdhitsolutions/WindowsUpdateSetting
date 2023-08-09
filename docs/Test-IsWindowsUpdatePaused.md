@@ -1,7 +1,7 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
 Module Name: WindowsUpdateSetting
-online version:
+online version: https://bit.ly/456TjS7
 schema: 2.0.0
 ---
 
@@ -19,7 +19,7 @@ Test-IsWindowsUpdatePaused [<CommonParameters>]
 
 ## DESCRIPTION
 
-A simple Boolean test to determine if updates are paused on a Windows 10 system.
+A simple Boolean test to determine if updates are paused on a Windows 10/11 system.
 
 ## EXAMPLES
 
@@ -51,4 +51,4 @@ Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell
 
 ## RELATED LINKS
 
-[Get-WindowsUpdateSetting]()
+[Get-WindowsUpdateSetting](Get-WindowsUpdateSetting.md)

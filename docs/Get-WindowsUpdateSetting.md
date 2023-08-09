@@ -1,7 +1,7 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
 Module Name: WindowsUpdateSetting
-online version:
+online version: https://bit.ly/3s6oApN
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ PS C:\> Get-WindowsUpdateSetting
 
 Computername  : BOVINE320
 UpdatesPaused : True
-PauseStartUTC : 9/19/2018 11:13:16 PM
-PauseEndUTC   : 10/24/2018 11:13:16 PM
+PauseStartUTC : 9/19/2022 11:13:16 PM
+PauseEndUTC   : 10/24/2022 11:13:16 PM
 Remaining     : 34.23:55:49.1598117
 ```
 
@@ -57,4 +57,4 @@ Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell
 
 ## RELATED LINKS
 
-[Test-IsWindowsUpdatePaused]()
+[Test-IsWindowsUpdatePaused](Test-IsWindowsUpdatePaused.md)

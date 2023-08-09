@@ -1,7 +1,7 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
 Module Name: WindowsUpdateSetting
-online version:
+online version: https://bit.ly/47nMfSG
 schema: 2.0.0
 ---
 
@@ -19,7 +19,7 @@ Get-WindowsActiveHours [<CommonParameters>]
 
 ## DESCRIPTION
 
-Use this command to display the current settings for Windows active hours. Typically, Windows will not restart your computer during these hours. Hours are display in a 24 hour format.
+Use this command to display the current settings for Windows active hours. Typically, Windows will not restart your computer during these hours. Hours are displayed as formatted values, but the raw property is the hour in a 24 hour format.
 
 ## EXAMPLES
 
@@ -28,9 +28,9 @@ Use this command to display the current settings for Windows active hours. Typic
 ```powershell
 PS C:\> Get-WindowsActiveHours
 
-Computername ActiveHoursStart ActiveHoursEnd
------------- ---------------- --------------
-BOVINE320                   7             20
+Computername          Start        End
+------------          -----        ---
+WIN11DESK          06:00 AM   10:00 PM
 ```
 
 ## PARAMETERS
@@ -53,4 +53,4 @@ Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell
 
 ## RELATED LINKS
 
-[Set-WindowsActiveHours]()
+[Set-WindowsActiveHours](Set-WindowsActiveHours.md)

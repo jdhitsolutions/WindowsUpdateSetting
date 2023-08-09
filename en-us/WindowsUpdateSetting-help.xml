@@ -10,7 +10,7 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Use this command to display the current settings for Windows active hours. Typically, Windows will not restart your computer during these hours. Hours are display in a 24 hour format.</maml:para>
+      <maml:para>Use this command to display the current settings for Windows active hours. Typically, Windows will not restart your computer during these hours. Hours are displayed as formatted values, but the raw property is the hour in a 24 hour format.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -48,15 +48,19 @@
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Get-WindowsActiveHours
 
-Computername ActiveHoursStart ActiveHoursEnd
------------- ---------------- --------------
-BOVINE320                   7             20</dev:code>
+Computername          Start        End
+------------          -----        ---
+WIN11DESK          06:00 AM   10:00 PM</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://bit.ly/47nMfSG</maml:uri>
+      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Set-WindowsActiveHours</maml:linkText>
         <maml:uri></maml:uri>
@@ -121,6 +125,10 @@ BOVINE320                       30                     7</dev:code>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://bit.ly/440sPk0</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>Set-WindowsUpdateDeferral</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
@@ -176,8 +184,8 @@ BOVINE320                       30                     7</dev:code>
 
 Computername  : BOVINE320
 UpdatesPaused : True
-PauseStartUTC : 9/19/2018 11:13:16 PM
-PauseEndUTC   : 10/24/2018 11:13:16 PM
+PauseStartUTC : 9/19/2022 11:13:16 PM
+PauseEndUTC   : 10/24/2022 11:13:16 PM
 Remaining     : 34.23:55:49.1598117</dev:code>
         <dev:remarks>
           <maml:para>The settings when updates are paused.</maml:para>
@@ -185,6 +193,10 @@ Remaining     : 34.23:55:49.1598117</dev:code>
       </command:example>
     </command:examples>
     <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://bit.ly/3s6oApN</maml:uri>
+      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Test-IsWindowsUpdatePaused</maml:linkText>
         <maml:uri></maml:uri>
@@ -208,9 +220,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
         <maml:name>Resume-WindowsUpdate</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Passthru</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Display the current update settings.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -219,9 +231,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -230,9 +242,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -244,9 +256,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Passthru</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Display the current update settings.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -256,9 +268,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -268,9 +280,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -314,6 +326,10 @@ Remaining     : 34.23:55:49.1598117</dev:code>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://bit.ly/3DP7hfp</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>Suspend-WindowsUpdate</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
@@ -329,16 +345,16 @@ Remaining     : 34.23:55:49.1598117</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Use this command to configure your active hours. During this time span, Windows should not restart your computer. The timespan between start and end times cannot exceed 18 hours.</maml:para>
+      <maml:para>Use this command to configure your active hours. During this time span, Windows should not restart your computer. The time span between start and end times cannot exceed 18 hours.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Set-WindowsActiveHours</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>StartTime</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Enter a starting time like 7:00AM or 7:00</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
           <dev:type>
             <maml:name>DateTime</maml:name>
@@ -348,9 +364,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>EndTime</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Enter a ending time like 7:00PM or 19:00</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
           <dev:type>
             <maml:name>DateTime</maml:name>
@@ -360,9 +376,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -371,9 +387,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Passthru</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Display active hours</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -382,9 +398,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -396,9 +412,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -408,9 +424,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>EndTime</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Enter a ending time like 7:00PM or 19:00</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
           <maml:name>DateTime</maml:name>
@@ -420,9 +436,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Passthru</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Display active hours</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -432,9 +448,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>StartTime</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Enter a starting time like 7:00AM or 7:00</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
           <maml:name>DateTime</maml:name>
@@ -444,9 +460,9 @@ Remaining     : 34.23:55:49.1598117</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -498,17 +514,21 @@ Remaining     : 34.23:55:49.1598117</dev:code>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Set-WindowsActiveHours -StartTime 6:00 -EndTime 21:00 -Passthru
+        <dev:code>PS C:\&gt; Set-WindowsActiveHours -StartTime 8:00 -EndTime 20:00 -Passthru
 
-Computername ActiveHoursStart ActiveHoursEnd
------------- ---------------- --------------
-BOVINE320                   6             21</dev:code>
+Computername         Start        End
+------------         -----        ---
+PROSPERO          08:00 AM   08:00 PM</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://bit.ly/3DRauLo</maml:uri>
+      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-WindowsActiveHours</maml:linkText>
         <maml:uri></maml:uri>
@@ -532,9 +552,9 @@ BOVINE320                   6             21</dev:code>
         <maml:name>Set-WindowsUpdateDeferral</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Feature</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Enter the number of days (0-365) to defer feature updates</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
           <dev:type>
             <maml:name>Int32</maml:name>
@@ -544,9 +564,9 @@ BOVINE320                   6             21</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Quality</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Enter the number of days (0-365) to defer quality updates</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
           <dev:type>
             <maml:name>Int32</maml:name>
@@ -556,9 +576,9 @@ BOVINE320                   6             21</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -567,9 +587,9 @@ BOVINE320                   6             21</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Passthru</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Display the current settings.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -578,9 +598,9 @@ BOVINE320                   6             21</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -592,9 +612,9 @@ BOVINE320                   6             21</dev:code>
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -604,9 +624,9 @@ BOVINE320                   6             21</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Feature</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Enter the number of days (0-365) to defer feature updates</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
         <dev:type>
           <maml:name>Int32</maml:name>
@@ -616,9 +636,9 @@ BOVINE320                   6             21</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Passthru</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Display the current settings.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -628,9 +648,9 @@ BOVINE320                   6             21</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>Quality</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Enter the number of days (0-365) to defer quality updates</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
         <dev:type>
           <maml:name>Int32</maml:name>
@@ -640,9 +660,9 @@ BOVINE320                   6             21</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -699,6 +719,10 @@ BOVINE320                       30                     7</dev:code>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://bit.ly/44ZqRS1</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>Get-WindowsUpdateDeferral</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
@@ -721,9 +745,9 @@ BOVINE320                       30                     7</dev:code>
         <maml:name>Suspend-WindowsUpdate</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Passthru</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Display the current update settings.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -732,9 +756,9 @@ BOVINE320                       30                     7</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -743,9 +767,9 @@ BOVINE320                       30                     7</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -754,9 +778,9 @@ BOVINE320                       30                     7</dev:code>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Resume</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Enter a datetime to resume updates. This must be less than 35 days.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
           <dev:type>
             <maml:name>DateTime</maml:name>
@@ -769,9 +793,9 @@ BOVINE320                       30                     7</dev:code>
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Passthru</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Display the current update settings.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -781,9 +805,9 @@ BOVINE320                       30                     7</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -793,9 +817,9 @@ BOVINE320                       30                     7</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -805,9 +829,9 @@ BOVINE320                       30                     7</dev:code>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Resume</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Enter a datetime to resume updates. This must be less than 35 days.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
           <maml:name>DateTime</maml:name>
@@ -850,34 +874,30 @@ BOVINE320                       30                     7</dev:code>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Suspend-WindowsUpdate -Passthru
+        <dev:code>PS C:\&gt; Suspend-WindowsUpdate -passthru
 
+   Computername: PROSPERO
 
-Computername  : BOVINE320
-UpdatesPaused : True
-PauseStartUTC : 9/19/2018 11:13:16 PM
-PauseEndUTC   : 10/24/2018 11:13:16 PM
-Remaining     : 34.23:59:59.6602540</dev:code>
+Paused   PauseStartUTC          PauseEndUTC             TimeRemaining
+------   -------------          -----------             -------------
+True     8/9/2023 8:27:34 PM    9/13/2023 8:27:34 PM      35.03:59:59</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Suspend-WindowsUpdate -Resume "9/30/2018" -Passthru
-
-
-Computername  : BOVINE320
-UpdatesPaused : True
-PauseStartUTC : 9/20/2018 1:25:15 PM
-PauseEndUTC   : 9/30/2018 4:00:00 AM
-Remaining     : 9.18:34:43.9615246</dev:code>
+        <dev:code>PS C:\&gt; Suspend-WindowsUpdate -Resume (Get-Date).AddDays(10)</dev:code>
         <dev:remarks>
           <maml:para>Suspend Windows Updates for about 10 days.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://bit.ly/3DQf7Wb</maml:uri>
+      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Resume-WindowsUpdate</maml:linkText>
         <maml:uri></maml:uri>
@@ -894,7 +914,7 @@ Remaining     : 9.18:34:43.9615246</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>A simple Boolean test to determine if updates are paused on a Windows 10 system.</maml:para>
+      <maml:para>A simple Boolean test to determine if updates are paused on a Windows 10/11 system.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -939,6 +959,10 @@ True</dev:code>
       </command:example>
     </command:examples>
     <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://bit.ly/456TjS7</maml:uri>
+      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-WindowsUpdateSetting</maml:linkText>
         <maml:uri></maml:uri>

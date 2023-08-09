@@ -1,7 +1,7 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
 Module Name: WindowsUpdateSetting
-online version:
+online version: https://bit.ly/3DP7hfp
 schema: 2.0.0
 ---
 
@@ -100,5 +100,4 @@ http://jdhitsolutions.com/blog/essential-powershell-resources/
 
 ## RELATED LINKS
 
-[Suspend-WindowsUpdate]()
-
+[Suspend-WindowsUpdate](Suspend-WindowsUpdate.md)

@@ -1,7 +1,7 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
 Module Name: WindowsUpdateSetting
-online version:
+online version: https://bit.ly/3DQf7Wb
 schema: 2.0.0
 ---
 
@@ -33,27 +33,19 @@ PS C:\> Suspend-WindowsUpdates
 ### EXAMPLE 2
 
 ```powershell
-PS C:\> Suspend-WindowsUpdate -Passthru
+PS C:\> Suspend-WindowsUpdate -passthru
 
+   Computername: PROSPERO
 
-Computername  : BOVINE320
-UpdatesPaused : True
-PauseStartUTC : 9/19/2018 11:13:16 PM
-PauseEndUTC   : 10/24/2018 11:13:16 PM
-Remaining     : 34.23:59:59.6602540
+Paused   PauseStartUTC          PauseEndUTC             TimeRemaining
+------   -------------          -----------             -------------
+True     8/9/2023 8:27:34 PM    9/13/2023 8:27:34 PM      35.03:59:59
 ```
 
 ### EXAMPLE 3
 
 ```powershell
-PS C:\> Suspend-WindowsUpdate -Resume "9/30/2018" -Passthru
-
-
-Computername  : BOVINE320
-UpdatesPaused : True
-PauseStartUTC : 9/20/2018 1:25:15 PM
-PauseEndUTC   : 9/30/2018 4:00:00 AM
-Remaining     : 9.18:34:43.9615246
+PS C:\> Suspend-WindowsUpdate -Resume (Get-Date).AddDays(10)
 ```
 
 Suspend Windows Updates for about 10 days.
@@ -143,5 +135,4 @@ http://jdhitsolutions.com/blog/essential-powershell-resources/
 
 ## RELATED LINKS
 
-[Resume-WindowsUpdate]()
-
+[Resume-WindowsUpdate](Resume-WindowsUpdate.md)
