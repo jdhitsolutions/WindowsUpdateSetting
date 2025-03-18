@@ -12,7 +12,10 @@ Function Set-WindowsUpdateDeferral {
         [Switch]$PassThru
     )
 
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Starting $($MyInvocation.MyCommand)"
+    $PSDefaultParameterValues["_verbose:Command"] = $MyInvocation.MyCommand
+    _verbose $strings.Starting
+    _verbose ($strings.UsingModule -f $ModuleVersion)
+    _verbose ($strings.PSVersion -f $PSVersionTable.PSVersion)
     $base1 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings"
 
     if ($PSCmdlet.ShouldProcess("$env:COMPUTERNAME")) {
@@ -28,5 +31,6 @@ Function Set-WindowsUpdateDeferral {
         }
     } #should process
 
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Ending $($MyInvocation.MyCommand)"
+    $PSDefaultParameterValues["_verbose:Command"] = $MyInvocation.MyCommand
+    _verbose $strings.Ending
 }

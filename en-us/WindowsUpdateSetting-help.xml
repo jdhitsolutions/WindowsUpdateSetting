@@ -40,7 +40,7 @@
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/</maml:para>
+        <maml:para>Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -59,7 +59,7 @@ WIN11DESK          06:00 AM   10:00 PM</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://bit.ly/47nMfSG</maml:uri>
+        <maml:uri>https://jdhitsolutions.com/yourls/2a97cc</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Set-WindowsActiveHours</maml:linkText>
@@ -107,7 +107,7 @@ WIN11DESK          06:00 AM   10:00 PM</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/</maml:para>
+        <maml:para>Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -126,7 +126,7 @@ BOVINE320                       30                     7</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://bit.ly/440sPk0</maml:uri>
+        <maml:uri>https://jdhitsolutions.com/yourls/355b5b</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Set-WindowsUpdateDeferral</maml:linkText>
@@ -174,7 +174,7 @@ BOVINE320                       30                     7</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/</maml:para>
+        <maml:para>Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -182,11 +182,11 @@ BOVINE320                       30                     7</dev:code>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Get-WindowsUpdateSetting
 
-Computername  : BOVINE320
-UpdatesPaused : True
-PauseStartUTC : 9/19/2022 11:13:16 PM
-PauseEndUTC   : 10/24/2022 11:13:16 PM
-Remaining     : 34.23:55:49.1598117</dev:code>
+   Computername: PROSPERO
+
+Paused   PauseStartUTC          PauseEndUTC             TimeRemaining
+------   -------------          -----------             -------------
+True     3/18/2025 1:42:20 PM   4/22/2025 1:42:20 PM      35.03:59:55</dev:code>
         <dev:remarks>
           <maml:para>The settings when updates are paused.</maml:para>
         </dev:remarks>
@@ -195,7 +195,7 @@ Remaining     : 34.23:55:49.1598117</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://bit.ly/3s6oApN</maml:uri>
+        <maml:uri>https://jdhitsolutions.com/yourls/c7d249</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Test-IsWindowsUpdatePaused</maml:linkText>
@@ -312,7 +312,7 @@ Remaining     : 34.23:55:49.1598117</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/</maml:para>
+        <maml:para>Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -327,7 +327,7 @@ Remaining     : 34.23:55:49.1598117</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://bit.ly/3DP7hfp</maml:uri>
+        <maml:uri>https://jdhitsolutions.com/yourls/133e47</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Suspend-WindowsUpdate</maml:linkText>
@@ -501,7 +501,7 @@ Remaining     : 34.23:55:49.1598117</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/</maml:para>
+        <maml:para>Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -527,7 +527,7 @@ PROSPERO          08:00 AM   08:00 PM</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://bit.ly/3DRauLo</maml:uri>
+        <maml:uri>https://jdhitsolutions.com/yourls/4ada3f</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-WindowsActiveHours</maml:linkText>
@@ -701,7 +701,7 @@ PROSPERO          08:00 AM   08:00 PM</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/</maml:para>
+        <maml:para>Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -720,7 +720,7 @@ BOVINE320                       30                     7</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://bit.ly/44ZqRS1</maml:uri>
+        <maml:uri>https://jdhitsolutions.com/yourls/33f459</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-WindowsUpdateDeferral</maml:linkText>
@@ -861,7 +861,7 @@ BOVINE320                       30                     7</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/</maml:para>
+        <maml:para>Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -880,7 +880,7 @@ BOVINE320                       30                     7</dev:code>
 
 Paused   PauseStartUTC          PauseEndUTC             TimeRemaining
 ------   -------------          -----------             -------------
-True     8/9/2023 8:27:34 PM    9/13/2023 8:27:34 PM      35.03:59:59</dev:code>
+True     3/18/2025 1:42:20 PM   4/22/2025 1:42:20 PM      35.03:59:59</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>
@@ -896,7 +896,7 @@ True     8/9/2023 8:27:34 PM    9/13/2023 8:27:34 PM      35.03:59:59</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://bit.ly/3DQf7Wb</maml:uri>
+        <maml:uri>https://jdhitsolutions.com/yourls/22231b</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Resume-WindowsUpdate</maml:linkText>
@@ -914,7 +914,7 @@ True     8/9/2023 8:27:34 PM    9/13/2023 8:27:34 PM      35.03:59:59</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>A simple Boolean test to determine if updates are paused on a Windows 10/11 system.</maml:para>
+      <maml:para>A simple Boolean test to determine if updates are paused on a Windows 10 or Windows 11 desktop.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -944,14 +944,13 @@ True     8/9/2023 8:27:34 PM    9/13/2023 8:27:34 PM      35.03:59:59</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/</maml:para>
+        <maml:para>Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Test-IsWindowsUpdatePaused
-
 True</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
@@ -961,7 +960,7 @@ True</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://bit.ly/456TjS7</maml:uri>
+        <maml:uri>https://jdhitsolutions.com/yourls/50d280</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-WindowsUpdateSetting</maml:linkText>

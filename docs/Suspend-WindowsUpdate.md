@@ -1,7 +1,7 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
 Module Name: WindowsUpdateSetting
-online version: https://bit.ly/3DQf7Wb
+online version: https://jdhitsolutions.com/yourls/22231b
 schema: 2.0.0
 ---
 
@@ -19,8 +19,7 @@ Suspend-WindowsUpdate [-Resume <DateTime>] [-Passthru] [-WhatIf] [-Confirm] [<Co
 
 ## DESCRIPTION
 
-This command achieves the same result as pausing Windows Updates in Settings/Windows Update/Advanced Settings.
-By default your system will not check or get any updates for 35 days. But you can specify a date that is less than 35 days.
+This command achieves the same result as pausing Windows Updates in Settings/Windows Update/Advanced Settings. By default your system will not check or get any updates for 35 days. But you can specify a date that is less than 35 days.
 
 ## EXAMPLES
 
@@ -39,7 +38,7 @@ PS C:\> Suspend-WindowsUpdate -passthru
 
 Paused   PauseStartUTC          PauseEndUTC             TimeRemaining
 ------   -------------          -----------             -------------
-True     8/9/2023 8:27:34 PM    9/13/2023 8:27:34 PM      35.03:59:59
+True     3/18/2025 1:42:20 PM   4/22/2025 1:42:20 PM      35.03:59:59
 ```
 
 ### EXAMPLE 3
@@ -130,8 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-Learn more about PowerShell:
-http://jdhitsolutions.com/blog/essential-powershell-resources/
+Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline
 
 ## RELATED LINKS
 

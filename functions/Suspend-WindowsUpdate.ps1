@@ -29,7 +29,10 @@ Function Suspend-WindowsUpdate {
         [Switch]$PassThru
     )
 
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Starting $($MyInvocation.MyCommand)"
+    $PSDefaultParameterValues["_verbose:Command"] = $MyInvocation.MyCommand
+    _verbose $strings.Starting
+    _verbose ($strings.UsingModule -f $ModuleVersion)
+    _verbose ($strings.PSVersion -f $PSVersionTable.PSVersion)
 
     $epoch = Get-Date 1/1/1600
     $utc = (Get-Date).ToUniversalTime()
@@ -40,11 +43,12 @@ Function Suspend-WindowsUpdate {
 
     $val = $ticks - $ticks % [TimeSpan]::TicksPerSecond
 
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Pausing Windows Updates until $end"
+    _verbose ($strings.Pausing -f $end)
 
     if ($PSCmdlet.ShouldProcess($env:computername, "Suspend Windows Update until $Resume")) {
 
         $base1 = 'HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings'
+        _verbose ($strings.Updating-f $base1)
         Set-ItemProperty -Path $base1 -Name PauseFeatureUpdatesStartTime -Value $start -Type String
         Set-ItemProperty -Path $base1 -Name PauseQualityUpdatesStartTime -Value $start -Type String
         Set-ItemProperty -Path $base1 -Name PauseUpdatesExpiryTime -Value $end -Type String
@@ -52,6 +56,7 @@ Function Suspend-WindowsUpdate {
         Set-ItemProperty -Path $base1 -Name PauseQualityUpdatesEndTime -Value $end -Type String
 
         $base2 = 'HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UpdatePolicy\Settings'
+        _verbose ($strings.Updating -f $base1)
         Set-ItemProperty -Path $base2 -Name PausedFeatureStatus -Value 1 -type DWord  #dword 1 = on 0 = off
         Set-ItemProperty -Path $base2 -Name PausedQualityStatus -Value 1 -type DWord  #dword 1 = on 0 = off
         Set-ItemProperty -Path $Base2 -Name PausedFeatureDate -Value $val -Type QWord
@@ -62,6 +67,7 @@ Function Suspend-WindowsUpdate {
         }
     }
 
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Ending $($MyInvocation.MyCommand)"
+    $PSDefaultParameterValues["_verbose:Command"] = $MyInvocation.MyCommand
+    _verbose $strings.Ending
 
 }

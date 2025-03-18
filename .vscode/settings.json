@@ -1,5 +1,9 @@
 
 {
     // When enabled, will trim trailing whitespace when you save a file.
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "cSpell.words": [
+        "windowsactivehours",
+        "windowsupdatesetting"
+    ]
 }

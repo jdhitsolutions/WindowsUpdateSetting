@@ -6,36 +6,41 @@ Function Resume-WindowsUpdate {
 
     Param([Switch]$PassThru)
 
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Starting $($MyInvocation.MyCommand)"
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Testing if Windows Update is paused"
+    $PSDefaultParameterValues["_verbose:Command"] = $MyInvocation.MyCommand
+    _verbose $strings.Starting
+    _verbose ($strings.UsingModule -f $ModuleVersion)
+    _verbose ($strings.PSVersion -f $PSVersionTable.PSVersion)
+    _verbose $strings.Testing
 
     if (Test-IsWindowsUpdatePaused) {
+        $PSDefaultParameterValues["_verbose:Command"] = $MyInvocation.MyCommand
         If ($PSCmdlet.ShouldProcess($env:COMPUTERNAME)) {
-            Write-Verbose "[$((Get-Date).TimeOfDay)] Restoring Windows Update Settings"
+            _verbose $strings.Restoring
             $base1 = 'HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings'
-
+            _verbose ($strings.GetSetting -f $base1)
             $settings = 'PauseFeatureUpdatesStartTime', 'PauseQualityUpdatesStartTime',
             'PauseUpdatesExpiryTime', 'PauseFeatureUpdatesEndTime', 'PauseQualityUpdatesEndTime'
 
-            Write-Verbose "[$((Get-Date).TimeOfDay)] Removing registry values from $base1"
+           _verbose ($strings.Removing -f $base1)
             foreach ($setting in $settings) {
-                Write-Verbose "[$((Get-Date).TimeOfDay)] ..$setting"
+                _verbose $setting
                 Remove-ItemProperty -Path $base1 -Name $setting
             }
 
             $base2 = 'HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UpdatePolicy\Settings'
             $settings = 'PausedFeatureStatus', 'PausedQualityStatus'
-            Write-Verbose "[$((Get-Date).TimeOfDay)] Updating registry values from $base2"
+            _verbose ($strings.Updating -f $base2)
 
             foreach ($setting in $settings) {
-                Write-Verbose "[$((Get-Date).TimeOfDay)] ..$setting"
+                _verbose $setting
                 Set-ItemProperty -Path $base2 -Name $setting -Value 0 -type DWord  #dword 1 = on 0 = off
             }
 
             $settings = 'PausedFeatureDate', 'PausedQualityDate'
-            Write-Verbose "[$((Get-Date).TimeOfDay)] Removing registry values from $base2"
+            _verbose ($strings.Removing -f $base2)
+
             foreach ($setting in $settings) {
-                Write-Verbose "[$((Get-Date).TimeOfDay)] ..$setting"
+                _verbose $setting
                 Remove-ItemProperty -Path $base2 -Name $setting
             }
 
@@ -45,9 +50,9 @@ Function Resume-WindowsUpdate {
         } #should process
     } #if paused
     else {
-        Write-Host 'Windows Updates are already enabled' -ForegroundColor green
+        Write-Host $strings.Enabled -ForegroundColor green
     }
-
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Ending $($MyInvocation.MyCommand)"
+    $PSDefaultParameterValues["_verbose:Command"] = $MyInvocation.MyCommand
+    _verbose $strings.Ending
 
 }

@@ -1,7 +1,7 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
 Module Name: WindowsUpdateSetting
-online version: https://bit.ly/3s6oApN
+online version: https://jdhitsolutions.com/yourls/c7d249
 schema: 2.0.0
 ---
 
@@ -28,11 +28,11 @@ Display the current values for any paused Windows Update settings.
 ```powershell
 PS C:\> Get-WindowsUpdateSetting
 
-Computername  : BOVINE320
-UpdatesPaused : True
-PauseStartUTC : 9/19/2022 11:13:16 PM
-PauseEndUTC   : 10/24/2022 11:13:16 PM
-Remaining     : 34.23:55:49.1598117
+   Computername: PROSPERO
+
+Paused   PauseStartUTC          PauseEndUTC             TimeRemaining
+------   -------------          -----------             -------------
+True     3/18/2025 1:42:20 PM   4/22/2025 1:42:20 PM      35.03:59:55
 ```
 
 The settings when updates are paused.
@@ -53,7 +53,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/
+Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline
 
 ## RELATED LINKS
 

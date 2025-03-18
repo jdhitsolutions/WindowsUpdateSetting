@@ -1,7 +1,7 @@
 ---
 external help file: WindowsUpdateSetting-help.xml
 Module Name: WindowsUpdateSetting
-online version: https://bit.ly/456TjS7
+online version: https://jdhitsolutions.com/yourls/50d280
 schema: 2.0.0
 ---
 
@@ -19,7 +19,7 @@ Test-IsWindowsUpdatePaused [<CommonParameters>]
 
 ## DESCRIPTION
 
-A simple Boolean test to determine if updates are paused on a Windows 10/11 system.
+A simple Boolean test to determine if updates are paused on a Windows 10 or Windows 11 desktop.
 
 ## EXAMPLES
 
@@ -27,7 +27,6 @@ A simple Boolean test to determine if updates are paused on a Windows 10/11 syst
 
 ```powershell
 PS C:\> Test-IsWindowsUpdatePaused
-
 True
 ```
 
@@ -47,7 +46,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/
+Learn more about PowerShell: https://buttondown.com/behind-the-powershell-pipeline
 
 ## RELATED LINKS
 

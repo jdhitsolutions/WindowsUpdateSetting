@@ -5,13 +5,21 @@ Function Get-WindowsUpdateSetting {
 
     Param()
 
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Starting $($MyInvocation.MyCommand)"
+    $PSDefaultParameterValues["_verbose:Command"] = $MyInvocation.MyCommand
+    _verbose $strings.Starting
+    if ($MyInvocation.CommandOrigin -eq 'Runspace') {
+        #Hide this metadata when the command is called from another command
+        _verbose ($strings.UsingModule -f $ModuleVersion)
+        _verbose ($strings.PSVersion -f $PSVersionTable.PSVersion)
+    }
     $base1 = 'HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings'
-
+    _verbose ($strings.GetSetting -f $base1)
     $paused = Test-IsWindowsUpdatePaused
 
+    $PSDefaultParameterValues["_verbose:Command"] = $MyInvocation.MyCommand
+
     if ($paused) {
-        Write-Verbose "[$((Get-Date).TimeOfDay)] Querying $base1 for values"
+       _verbose ($strings.Query -f $base1)
         $start = ((Get-ItemPropertyValue -Path $base1 -Name PauseFeatureUpdatesStartTime) -As [DateTime]).ToUniversalTime()
         $resume = ((Get-ItemPropertyValue -Path $base1 -Name PauseFeatureUpdatesEndTime) -As [DateTime]).ToUniversalTime()
         $remain = $resume - (Get-Date)
@@ -30,5 +38,5 @@ Function Get-WindowsUpdateSetting {
         Remaining     = $remain
     }
 
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Ending $($MyInvocation.MyCommand)"
+    _verbose $strings.Ending
 }

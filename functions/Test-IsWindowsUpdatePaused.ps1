@@ -4,9 +4,14 @@ Function Test-IsWindowsUpdatePaused {
 
     Param()
 
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Starting $($MyInvocation.MyCommand)"
-
-    $base1 = "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings"
+    $PSDefaultParameterValues['_verbose:Command'] = $MyInvocation.MyCommand
+    _verbose $strings.Starting
+    if ($MyInvocation.CommandOrigin -eq 'Runspace') {
+        #Hide this metadata when the command is called from another command
+        _verbose ($strings.UsingModule -f $ModuleVersion)
+        _verbose ($strings.PSVersion -f $PSVersionTable.PSVersion)
+    }
+    $base1 = 'HKLM:\SOFTWARE\Microsoft\WindowsUpdate\ux\Settings'
     Try {
         [void](Get-ItemProperty -Path $base1 -Name PauseFeatureUpdatesStartTime -ErrorAction stop)
         $True
@@ -15,5 +20,5 @@ Function Test-IsWindowsUpdatePaused {
         $False
     }
 
-    Write-Verbose "[$((Get-Date).TimeOfDay)] Ending $($MyInvocation.MyCommand)"
+    _verbose $strings.Ending
 }
